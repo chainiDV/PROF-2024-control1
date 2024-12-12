@@ -17,7 +17,6 @@ public class Customer {
 			throw new NoAccountsException();
 		}
 		
-		
 		String selectedAccount = "";
 		float maxBalance = 0;
 		
