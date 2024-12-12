@@ -28,4 +28,12 @@ public class Account {
 		return accountNumber;
 	}
 
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public void addTransaction(Transaction transaction) {
+		transactions.add(transaction);
+	}
+
 }

@@ -17,7 +17,6 @@ public class Customer {
 			throw new NoAccountsException();
 		}
 		
-		
 		String selectedAccount = "";
 		float maxBalance = 0;
 		
@@ -33,6 +32,10 @@ public class Customer {
 		
 		return selectedAccount;
 		
+	}
+
+	public void addAccount(Account account) {
+		this.accounts.add(account);
 	}
 	
 }
