@@ -24,18 +24,6 @@ dependencies {
     testImplementation 'org.mockito:mockito-junit-jupiter:5.4.0'  // Para integración con JUnit 5
 }
 
-// Apply a specific Java toolchain to ease working on different environments.
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
-application {
-    // Define the main class for the application.
-    mainClass = 'es.upm.grise.prof.curso2024.control1.Account'
-}
-
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
