@@ -18,6 +18,9 @@ repositories {
 dependencies {
     testCompileOnly 'org.junit.jupiter:junit-jupiter-api:5.11.3'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
+
+    testImplementation 'org.mockito:mockito-core:5.4.0'  // Versión más reciente de Mockito
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.4.0'  // Para integración con JUnit 5
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
