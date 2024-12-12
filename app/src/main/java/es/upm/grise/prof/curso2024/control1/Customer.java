@@ -34,5 +34,9 @@ public class Customer {
 		return selectedAccount;
 		
 	}
+
+	public void addAccount(Account account) {
+		this.accounts.add(account);
+	}
 	
 }
