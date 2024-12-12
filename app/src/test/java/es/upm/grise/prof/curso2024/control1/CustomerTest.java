@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class CustomerTest {
 
     @Test
@@ -17,9 +20,9 @@ public class CustomerTest {
     @Test
     public void testGetAccountWithHighestBalanceWithAccounts() throws NoAccountsException {
 
-        final int LOWEST_TRANSACTION  = 100;
-        final int MIDDLE_TRANSACTION  = 200;
-        final int HIGHEST_TRANSACTION = 300;
+        final float LOWEST_TRANSACTION  = 100.0f;
+        final float MIDDLE_TRANSACTION  = 200.0f;
+        final float HIGHEST_TRANSACTION = 300.0f;
 
         final String ACCOUNT_NAME_1 = "Account 1";
         final String ACCOUNT_NAME_2 = "Account 2";
@@ -55,6 +58,40 @@ public class CustomerTest {
         account1.addTransaction(transaction1);
         account2.addTransaction(transaction2);
         account3.addTransaction(transaction3);
+
+        customer.addAccount(account1);
+        customer.addAccount(account2);
+        customer.addAccount(account3);
+
+        String accountWithHighestBalance = customer.getAccountWithHighestBalance();
+
+        //Verifico que devuelve el número de cuenta con el saldo más alto
+        assertEquals(account3.getAccountNumber(), accountWithHighestBalance);
+    }
+
+    public void testGetAccountWithHighestBalanceWithAccountsUsingMocking() throws NoAccountsException {
+
+        final float LOWEST_TRANSACTION  = 100.0f;
+        final float MIDDLE_TRANSACTION  = 200.0f;
+        final float HIGHEST_TRANSACTION = 300.0f;
+
+        final String ACCOUNT_NAME_1 = "Account 1";
+        final String ACCOUNT_NAME_2 = "Account 2";
+        final String ACCOUNT_NAME_3 = "Account 3";
+
+        Customer customer = new Customer();
+
+        Account account1 = mock(Account.class);
+        when(account1.getAccountNumber()).thenReturn(ACCOUNT_NAME_1);
+        when(account1.getCurrentBalance()).thenReturn(LOWEST_TRANSACTION);
+
+        Account account2 = mock(Account.class);
+        when(account2.getAccountNumber()).thenReturn(ACCOUNT_NAME_2);
+        when(account2.getCurrentBalance()).thenReturn(MIDDLE_TRANSACTION);
+
+        Account account3 = mock(Account.class);
+        when(account3.getAccountNumber()).thenReturn(ACCOUNT_NAME_3);
+        when(account3.getCurrentBalance()).thenReturn(HIGHEST_TRANSACTION);
 
         customer.addAccount(account1);
         customer.addAccount(account2);
